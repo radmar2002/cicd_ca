@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+
+
+{% block content %}
+{% load staticfiles %}
+<br>
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 font-italic">This site has <strong>{{counter}}</strong> visitors!</h1>
+            <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+        </div>
+</div>
+<ul class="nav nav-pills danger">
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'home' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'visitors' %}">Visitors List</a>
+    </li>
+</ul>
+
+
+<br>
+<br>
+
+<form action="/" method="POST">
+  {% csrf_token %}
+  <div class="form-group">
+    <input name="item_text" class="form-control input-lg" type="text" placeholder="Dear visitor please enter your name" required>
+  </div>
+  <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit">
+</form>
+
+<br>
+
+
+{% endblock content %}
